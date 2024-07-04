@@ -53,7 +53,7 @@ const TicketData = ({ data,setToggle }) => {
       name: <span className="font-weight-bold fs-13">CUSTOMER</span>,
       selector: (row) => row.Customer,
       sortable: true,
-      cell: (row) => <Link to="#!">{row.Customer}</Link>,
+      cell: (row) => <Link to="/mspcustomer">{row.Customer}</Link>,
       width: "150px",
     },
     {

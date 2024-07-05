@@ -100,7 +100,7 @@ import Logout from "../Pages/MSP/Nonauthenticated/Logout.jsx";
 import Login from "../Pages/MSP/Nonauthenticated/Login.jsx";
 import TicketModificationIndex from "../Pages/MSP/TicketModification/TicketModificationIndex.jsx";
 import TicketPageIndex from "../Pages/MSP/TicketPage/TicketPageIndex.jsx";
-
+import AssigneeIndex from "../Pages/MSP/Assignees/AssigneeIndex.jsx";
 const authProtectedRoutes = [
   //dashboard
   { path: "/dashboard", component: <DashboardIndex /> },
@@ -111,6 +111,7 @@ const authProtectedRoutes = [
   { path: "/mspdashboard", component: <DashboardIndex /> },
   {path:"/ticket",component:<TicketPageIndex/>},
   {path:"/mspcustomer",component:<CustomerIndex/>},
+  {path:"/technician",component:<AssigneeIndex/>},
   // Calender
   { path: "/calendar", component: <Calender /> },
 

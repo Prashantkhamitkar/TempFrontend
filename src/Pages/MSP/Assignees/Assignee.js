@@ -1,5 +1,40 @@
 export const data = [
   {
+    Username: "Abhishek Jadhav",
+    Email: "abhishekj@ashunya.com",
+    OpenTickets: 10,
+    ClosedTickets: 30,
+    LastClosed: "4 day ago",
+  },
+  {
+    Username: "Rakesh Reddy",
+    Email: "rakesh@ashunya.com",
+    OpenTickets: 20,
+    ClosedTickets: 30,
+    LastClosed: "2 day ago",
+  },
+  {
+    Username: "Henna Bhatia",
+    Email: "henna.bhatia@ashunya.com",
+    OpenTickets: 50,
+    ClosedTickets: 10,
+    LastClosed: "1 day ago",
+  },
+  {
+    Username: "Sanil Gaonkar",
+    Email: "sanil.gaonkar@ashunya.com",
+    OpenTickets: 2,
+    ClosedTickets: 20,
+    LastClosed: "3 day ago",
+  },
+  {
+    Username: "Prashant Khamitkar",
+    Email: "prashant.khamitkar@example.com",
+    OpenTickets: 0,
+    ClosedTickets: 0,
+    LastClosed: "N/A",
+  },
+  {
     Username: "Aarav Singh",
     Email: "aarav.singh@example.com",
     OpenTickets: 5,

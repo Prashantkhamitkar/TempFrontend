@@ -20,7 +20,7 @@ const AssigneeData = ({data}) => {
         selector: (row) => row.OpenTickets,
         sortable: true,
         cell: (row) => (
-          <Link to="#!" className="ms-5">
+          <Link to="#!" className="ms-3">
             {row.OpenTickets}
           </Link>
         ),
@@ -30,7 +30,7 @@ const AssigneeData = ({data}) => {
         selector: (row) => row.ClosedTickets,
         sortable: true,
         cell: (row) => (
-          <Link to="#!" className="ms-5">
+          <Link to="#!" className="ms-3">
             {row.ClosedTickets}
           </Link>
         ),

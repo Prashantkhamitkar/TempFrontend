@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 
 const Navdata = () => {
-  const [ui, setui] = useState(false);
-  const [app, setapp] = useState(false);
-  const [email, setemail] = useState(false);
-  const [component, setcomponent] = useState(false);
-  const [form, setform] = useState(false);
-  const [table, settable] = useState(false);
-  const [chart, setchart] = useState(false);
-  const [icon, seticon] = useState(false);
-  const [map, setmap] = useState(false);
-  const [pages, setpages] = useState(false);
-  const [auth, setauth] = useState(false);
-  const [utility, setutility] = useState(false);
+  const [hp, sethp] = useState(false);
+  const [hr, sethr] = useState(false);
+  const [subhr, setsubhr] = useState(false);
+  const [contract, setcontract] = useState(false);
+  const [billing, setbilling] = useState(false);
+  const [subbilling, setsubbilling] = useState(false);
 
   const NavnavData = [
     {
@@ -20,276 +14,234 @@ const Navdata = () => {
       label: "Dashboard",
       icon: "mdi mdi-home-variant-outline me-2",
       isdropDown: true,
+      isdashboard: true,
       click: function () {
-        setui(false);
-        setapp(false);
-        setcomponent(false);
-        setpages(false);
+        sethp(false);
+        sethr(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
       },
     },
     {
       id: 2,
-      label: "UI Elements",
-      icon: "mdi mdi-briefcase-variant-outline me-2",
+      label: "Customers",
+      icon: "mdi mdi-account-group-outline me-2",
+      isdropDown: true,
+      url: "/mspcustomer",
       click: function () {
-        setui(!ui);
-        setapp(false);
-        setcomponent(false);
-        setpages(false);
+        sethp(false);
+        sethr(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
       },
-      currentState: ui,
-      subItem: [
-        { link: "/ui-alerts", title: "Alerts" },
-        { link: "/ui-badge", title: "Badge" },
-        { link: "/ui-breadcrumb", title: "Breadcrumb" },
-        { link: "/ui-buttons", title: "Buttons" },
-        { link: "/ui-cards", title: "Cards" },
-        { link: "/ui-carousel", title: "Carousel" },
-        { link: "/ui-dropdowns", title: "Dropdowns" },
-        { link: "/ui-grid", title: "Grid" },
-        { link: "/ui-images", title: "Images" },
-        { link: "/ui-lightbox", title: "Lightbox" },
-        { link: "/ui-modals", title: "Modals" },
-        { link: "/ui-offcanvas", title: "Offcanvas" },
-        { link: "/ui-rangeslider", title: "Range Slider" },
-        { link: "/ui-sessiontimeout", title: "Session Timeout" },
-        { link: "/ui-pagination", title: "Pagination" },
-        { link: "/ui-placeholders", title: "Placeholders" },
-        { link: "/ui-progressbars", title: "Progress Bars" },
-        { link: "/ui-tabs-accordions", title: "Tabs & Accordions" },
-        { link: "/ui-typography", title: "Typography" },
-        { link: "/ui-toasts", title: "Toasts" },
-        { link: "/ui-video", title: "Video" },
-        { link: "/ui-popovers", title: "Popovers & Tooltips" },
-        { link: "/ui-rating", title: "Rating" },
-      ],
     },
     {
       id: 3,
-      label: "Apps",
-      icon: "ri-apps-2-line me-2",
+      label: "Helpdesk",
+      icon: "mdi mdi-handshake me-2",
       click: function () {
-        setapp(!app);
-        setui(false);
-        setcomponent(false);
-        setpages(false);
-        setemail(false);
-      },
+        sethp(!hp);
 
-      currentState: app,
+        sethr(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
+      },
+      currentState: hp,
       subItems: [
         {
-          label2: "Calendar",
-          url: "/calendar",
+          label2: "Tickets",
+          url: "/ticket",
         },
         {
-          label2: "Email",
-
-          staclick: function () {
-            setemail(!email);
-
-            setui(false);
-            setcomponent(false);
-            setpages(false);
-          },
-
-          subState: email,
-          subItem: [
-            { link: "/inbox", title: "Inbox" },
-            { link: "/read-email", title: "Read Email" },
-            { link: "/compose-email", title: "Compose Email" },
-          ],
+          label2: "Technicians",
+          url: "/technician",
+        },
+        {
+          label2: "Backup",
+          url: "/backup",
+        },
+        {
+          label2: "Reports",
+          url: "/#",
+        },
+        {
+          label2: "MSP360 Backups",
+          url: "/msp-backup",
+        },
+        {
+          label2: "Weekend Tasks",
+          url: "/weekend-tasks",
         },
       ],
     },
+
     {
       id: 4,
-      label: "Components",
-      icon: "ri-stack-line me-2",
+      label: "HR",
+      icon: "mdi mdi-account-supervisor-outline me-2",
       click: function () {
-        setcomponent(!component);
-        setui(false);
-        setapp(false);
-        setpages(false);
-        setmap(false);
-        setform(false);
-        settable(false);
-        setchart(false);
-        seticon(false);
+        sethr(!hr);
+        sethp(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
       },
-      currentState: component,
+      currentState: hr,
       subItems: [
         {
-          label2: "Forms",
-          staclick: function () {
-            setform(!form);
-            settable(false);
-            setchart(false);
-            seticon(false);
-            setmap(false);
+          label2: "Shifts Management ",
 
-            setui(false);
-            setapp(false);
-            setpages(false);
+          staclick: function () {
+            setsubhr(!subhr);
+            sethp(false);
+            setsubbilling(false);
+            setbilling(false);
+
+            setcontract(false);
           },
-          subState: form,
+
+          subState: subhr,
           subItem: [
-            { link: "/form-elements", title: "Elements" },
-            { link: "/form-validation", title: "Validation" },
-            { link: "/form-advanced", title: "Advanced Plugins" },
-            { link: "/form-editor", title: "Editors" },
-            { link: "/form-uploads", title: "File Upload" },
-            { link: "/form-editors", title: "Xeditable" },
-            { link: "/form-wizard", title: "Wizard" },
-            { link: "/form-mask", title: "Mask" },
+            { link: "/my-shifts", title: "My Shifts" },
+            { link: "/pick-shifts", title: "Pick Shifts" },
+            { link: "/#", title: "Shift Transfers" },
           ],
         },
-
         {
-          label2: "Tables",
-          staclick: function () {
-            settable(!table);
-            setform(false);
-            setchart(false);
-            seticon(false);
-            setmap(false);
-
-            setui(false);
-            setapp(false);
-            setpages(false);
-          },
-          subState: table,
-          subItem: [
-            { title: "Basic Tables", link: "/tables-basic" },
-            { title: "List Js", link: "/tables-listjs" },
-            { title: "React Datatables", link: "/table-datatables" },
-          ],
+          label2: "Holiday List",
+          url: "/#",
         },
-
         {
-          label2: "Charts",
-          staclick: function () {
-            setchart(!chart);
-            setform(false);
-            settable(false);
-            seticon(false);
-            setmap(false);
-
-            setui(false);
-            setapp(false);
-            setpages(false);
-          },
-          subState: chart,
-          subItem: [
-            { link: "/chart-apexcharts", title: "Apex Charts" },
-            { link: "/chart-chartjscharts", title: "Chartjs" },
-            { link: "/chart-floatcharts", title: "RE Charts" },
-            { link: "/chart-jknobcharts", title: "Knob Charts" },
-            { link: "/chart-sparklinecharts", title: "Sparkline Charts" },
-          ],
+          label2: "My Leaves",
+          url: "/#",
         },
-
         {
-          label2: "Icons",
-          staclick: function () {
-            seticon(!icon);
-
-            setform(false);
-            settable(false);
-            setchart(false);
-            setmap(false);
-
-            setui(false);
-            setapp(false);
-            setpages(false);
-          },
-          subState: icon,
-          subItem: [
-            { link: "/icon-boxicon", title: "BoxIcons" },
-            { link: "/icons-materialdesign", title: "Material Design" },
-            { link: "/icon-dripicons", title: "Dripicons" },
-            { link: "/icons-fontawesome", title: "Font Awesome" },
-          ],
-        },
-
-        {
-          label2: "Maps",
-          staclick: function () {
-            setmap(!map);
-            setform(false);
-            settable(false);
-            setchart(false);
-            seticon(false);
-
-            setui(false);
-            setapp(false);
-            setpages(false);
-          },
-          subState: map,
-          subItem: [
-            { link: "/maps-google", title: "Google Maps" },
-            { link: "/maps-vector", title: "Vector Maps" },
-          ],
+          label2: "Attendance Dashboard",
+          url: "/#",
         },
       ],
     },
     {
       id: 5,
-      label: "Pages",
-      icon: "ri-file-copy-2-line me-2",
+      label: "Contracts",
+      icon: "mdi mdi-file-document-edit-outline me-2",
       click: function () {
-        setpages(!pages);
-        setui(false);
-        setapp(false);
-        setcomponent(false);
-
-        setutility(false);
-        setauth(false);
+        setcontract(!contract);
+        sethp(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
       },
-      currentState: pages,
+
+      currentState: contract,
       subItems: [
         {
-          label2: "Authentication",
+          label2: "Contract Calendar View",
+          url: "/#",
+        },
+        {
+          label2: "New Contract",
+          url: "/#",
+        },
+        {
+          label2: "Contract List",
+          url: "/#",
+        },
+      ],
+    },
+    {
+      id: 6,
+      label: "Billing",
+      icon: "mdi mdi-credit-card-marker me-2",
+      click: function () {
+        setbilling(!billing);
+        sethp(false);
+        setsubbilling(false);
+
+        setsubhr(false);
+        setcontract(false);
+      },
+
+      currentState: billing,
+      subItems: [
+        {
+          label2: "AT&T",
+          url: "/#",
+        },
+        {
+          label2: "Stripe Payment Dashboard",
+          url: "/#",
+        },
+        {
+          label2: "Manual Payment Processing Rep...",
+          url: "/#",
+        },
+        {
+          label2: "SaaS Billing",
 
           staclick: function () {
-            setauth(!auth);
-            setutility(false);
+            setsubbilling(!subbilling);
+            sethp(false);
 
-            setui(false);
-            setapp(false);
-            setcomponent(false);
+            setbilling(false);
+            setsubhr(false);
+            setcontract(false);
           },
-          subState: auth,
+
+          subState: subbilling,
           subItem: [
-            { link: "/auth-login", title: "Login" },
-            { link: "/auth-register", title: "Register" },
-            { link: "/auth-recoverpw", title: "Recover Password" },
-            { link: "/auth-lock-screen", title: "Lock Screen" },
+            { link: "/#", title: "SaaS Billing Dashboard" },
+            { link: "/#", title: "SaaS (Ingram Cloud)" },
+            { link: "/#", title: "SaaS Payments" },
+            { link: "/#", title: "SaaS Payment History" },
           ],
         },
         {
-          label2: "Utility",
-          staclick: function () {
-            setutility(!utility);
-            setauth(false);
-
-            setui(false);
-            setapp(false);
-            setcomponent(false);
-          },
-          subState: utility,
-          subItem: [
-            { link: "/pages-starter", title: "Starter Page" },
-            { link: "/pages-maintenance", title: "Maintenance" },
-            { link: "/pages-comingsoon", title: "Coming Soon" },
-            { link: "/pages-timeline", title: "Timeline" },
-            { link: "/pages-faqs", title: "FAQs" },
-            { link: "/pages-pricing", title: "Pricing" },
-            { link: "/pages-404", title: "Error 404" },
-            { link: "/pages-500", title: "Error 500" },
-          ],
+          label2: "Stripe Customer Mapping",
+          url: "/#",
+        },
+        {
+          label2: "Backblaze Charges",
+          url: "/#",
         },
       ],
+    },
+    {
+      id: 7,
+      label: "Knowledge Base",
+      icon: "mdi mdi-head-lightbulb me-2",
+      isdropDown: true,
+      url: "/#",
+      click: function () {
+        sethp(false);
+        sethr(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
+      },
+    },
+    {
+      id: 8,
+      label: "Timesheet",
+      icon: "mdi mdi-clock-time-four-outline me-2",
+      isdropDown: true,
+      url: "/mspcustomer",
+      click: function () {
+        sethp(false);
+        sethr(false);
+        setsubbilling(false);
+        setbilling(false);
+        setsubhr(false);
+        setcontract(false);
+      },
     },
   ];
   return <React.Fragment>{NavnavData}</React.Fragment>;

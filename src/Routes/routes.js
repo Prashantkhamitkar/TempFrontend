@@ -3,7 +3,6 @@ import { Navigate } from "react-router-dom";
 
 //Dashboard
 
-
 // Import Calender
 import Calender from "../Pages/Calender";
 
@@ -94,24 +93,38 @@ import GoogleMap from "../Pages/Maps/GoogleMap";
 
 // Import MSP Pages
 import Index from "../Pages/MSP/TicketCreation/Index.jsx";
-import DashboardIndex from "../Pages/MSP/Dashboard/DashboardIndex.jsx"
+import DashboardIndex from "../Pages/MSP/Dashboard/DashboardIndex.jsx";
 import CustomerIndex from "../Pages/MSP/Customer/CustomerIndex.jsx";
 import Logout from "../Pages/MSP/Nonauthenticated/Logout.jsx";
 import Login from "../Pages/MSP/Nonauthenticated/Login.jsx";
 import TicketModificationIndex from "../Pages/MSP/TicketModification/TicketModificationIndex.jsx";
 import TicketPageIndex from "../Pages/MSP/TicketPage/TicketPageIndex.jsx";
 import AssigneeIndex from "../Pages/MSP/Assignees/AssigneeIndex.jsx";
+import BackupIndex from "../Pages/MSP/Backup/BackupIndex.jsx";
+import MspBackupIndex from "../Pages/MSP/MSP360 Backups/MspBackupIndex.jsx";
+import WeekendTaskIndex from "../Pages/MSP/Weekends Task/WeekendTaskIndex.jsx";
+import PickShift from "../Pages/MSP/Shift Management/PickShift.jsx";
+import MyShifts from "../Pages/MSP/Shift Management/MyShifts.jsx";
+
 const authProtectedRoutes = [
   //dashboard
   { path: "/dashboard", component: <DashboardIndex /> },
-  
+
   //msp pages
   { path: "/ticketcreation", component: <Index /> },
-  {path:"/ticketmodification/:ticketnumber",component:<TicketModificationIndex/>},
+  {
+    path: "/ticketmodification/:ticketnumber",
+    component: <TicketModificationIndex />,
+  },
   { path: "/mspdashboard", component: <DashboardIndex /> },
-  {path:"/ticket",component:<TicketPageIndex/>},
-  {path:"/mspcustomer",component:<CustomerIndex/>},
-  {path:"/technician",component:<AssigneeIndex/>},
+  { path: "/ticket", component: <TicketPageIndex /> },
+  { path: "/mspcustomer", component: <CustomerIndex /> },
+  { path: "/technician", component: <AssigneeIndex /> },
+  { path: "/backup", component: <BackupIndex /> },
+  { path: "/msp-backup", component: <MspBackupIndex /> },
+  { path: "/weekend-tasks", component: <WeekendTaskIndex /> },
+  { path: "/my-shifts", component: <MyShifts/> },
+  { path: "/pick-shifts", component: <PickShift /> },
   // Calender
   { path: "/calendar", component: <Calender /> },
 

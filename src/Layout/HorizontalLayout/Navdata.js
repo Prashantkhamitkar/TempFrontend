@@ -111,16 +111,16 @@ const Navdata = () => {
           subItem: [
             { link: "/my-shifts", title: "My Shifts" },
             { link: "/pick-shifts", title: "Pick Shifts" },
-            { link: "/#", title: "Shift Transfers" },
+            { link: "/manage-shift", title: "Shift Transfers" },
           ],
         },
         {
           label2: "Holiday List",
-          url: "/#",
+          url: "/holiday-list",
         },
         {
           label2: "My Leaves",
-          url: "/#",
+          url: "/my-leaves",
         },
         {
           label2: "Attendance Dashboard",
@@ -144,15 +144,15 @@ const Navdata = () => {
       subItems: [
         {
           label2: "Contract Calendar View",
-          url: "/#",
+          url: "/contract-calendar-view",
         },
         {
           label2: "New Contract",
-          url: "/#",
+          url: "/new-contract",
         },
         {
           label2: "Contract List",
-          url: "/#",
+          url: "/contract-list",
         },
       ],
     },

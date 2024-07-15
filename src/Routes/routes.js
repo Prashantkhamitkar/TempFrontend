@@ -13,16 +13,7 @@ import EmailCompose from "../Pages/E-mail/EmailCompose";
 
 // Import Authentication pages
 
-import ForgetPasswordPage from "../Pages/Authentication/ForgetPassword";
-
-import Register from "../Pages/Authentication/Register";
-import UserProfile from "../Pages/Authentication/user-profile";
-
 // Import Authentication Inner Pages
-import Login1 from "../Pages/AuthenticationPages/Login";
-import Register1 from "../Pages/AuthenticationPages/Register";
-import RecoverPassword from "../Pages/AuthenticationPages/RecoverPassword";
-import LockScreen from "../Pages/AuthenticationPages/LockScreen";
 
 // Import Utility Pages
 import StarterPage from "../Pages/Utility/Starter-Page";
@@ -98,13 +89,21 @@ import CustomerIndex from "../Pages/MSP/Customer/CustomerIndex.jsx";
 import Logout from "../Pages/MSP/Nonauthenticated/Logout.jsx";
 import Login from "../Pages/MSP/Nonauthenticated/Login.jsx";
 import TicketModificationIndex from "../Pages/MSP/TicketModification/TicketModificationIndex.jsx";
-import TicketPageIndex from "../Pages/MSP/TicketPage/TicketPageIndex.jsx";
-import AssigneeIndex from "../Pages/MSP/Assignees/AssigneeIndex.jsx";
-import BackupIndex from "../Pages/MSP/Backup/BackupIndex.jsx";
-import MspBackupIndex from "../Pages/MSP/MSP360 Backups/MspBackupIndex.jsx";
-import WeekendTaskIndex from "../Pages/MSP/Weekends Task/WeekendTaskIndex.jsx";
-import PickShift from "../Pages/MSP/Shift Management/PickShift.jsx";
-import MyShifts from "../Pages/MSP/Shift Management/MyShifts.jsx";
+
+import NewContractIndex from "../Pages/MSP/Contract/NewContract/NewContractIndex.jsx";
+import ContractIndex from "../Pages/MSP/Contract/Contract View List/ContractIndex.jsx";
+
+import MyShifts from "../Pages/MSP/HR/Shift Management/MyShifts.jsx";
+import PickShift from "../Pages/MSP/HR/Shift Management/PickShift.jsx";
+import ShiftManagementIndex from "../Pages/MSP/HR/Shift Management/ShiftManagementIndex.jsx";
+import MyLeaves from "../Pages/MSP/HR/My Leaves/MyLeaves.jsx";
+import HolidayIndex from "../Pages/MSP/HR/Holiday/HolidayIndex.jsx";
+import AssigneeIndex from "../Pages/MSP/HelpDesk/Assignees/AssigneeIndex.jsx";
+import BackupIndex from "../Pages/MSP/HelpDesk/Backup/BackupIndex.jsx";
+import MspBackupIndex from "../Pages/MSP/HelpDesk/MSP360 Backups/MspBackupIndex.jsx";
+import TicketPageIndex from "../Pages/MSP/HelpDesk/TicketPage/TicketPageIndex.jsx";
+import WeekendTaskIndex from "../Pages/MSP/HelpDesk/Weekends Task/WeekendTaskIndex.jsx";
+import ContractCalendar from "../Pages/MSP/Contract/Contract Calendar/ContractCalendar.jsx";
 
 const authProtectedRoutes = [
   //dashboard
@@ -123,13 +122,18 @@ const authProtectedRoutes = [
   { path: "/backup", component: <BackupIndex /> },
   { path: "/msp-backup", component: <MspBackupIndex /> },
   { path: "/weekend-tasks", component: <WeekendTaskIndex /> },
-  { path: "/my-shifts", component: <MyShifts/> },
+  { path: "/my-shifts", component: <MyShifts /> },
   { path: "/pick-shifts", component: <PickShift /> },
+  { path: "/manage-shift", component: <ShiftManagementIndex /> },
+  { path: "/my-leaves", component: <MyLeaves /> },
+  { path: "/holiday-list", component: <HolidayIndex /> },
+  { path: "/contract-calendar-view", component: <ContractCalendar /> },
+  { path: "/new-contract", component: <NewContractIndex /> },
+  { path: "/contract-list", component: <ContractIndex /> },
   // Calender
   { path: "/calendar", component: <Calender /> },
 
   // Profile
-  { path: "/userprofile", component: <UserProfile /> },
 
   // E-mail
   { path: "/inbox", component: <Inbox /> },
@@ -212,14 +216,6 @@ const publicRoutes = [
   // Authentication Page
   { path: "/logout", component: <Logout /> },
   { path: "/login", component: <Login /> },
-  { path: "/forgot-password", component: <ForgetPasswordPage /> },
-  { path: "/register", component: <Register /> },
-
-  // Authentication Inner Pages
-  { path: "/auth-login", component: <Login1 /> },
-  { path: "/auth-register", component: <Register1 /> },
-  { path: "/auth-recoverpw", component: <RecoverPassword /> },
-  { path: "/auth-lock-screen", component: <LockScreen /> },
 
   // Utility Pages
   { path: "/pages-404", component: <Error404 /> },

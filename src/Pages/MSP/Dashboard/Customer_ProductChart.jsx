@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardTitle, Col, Row } from 'reactstrap';
+import { Card, CardText, CardTitle, Col, Row } from 'reactstrap';
 import PieChart from '../../AllCharts/chartjs/piechart';
 import CustomerChart from './CustomerChart';
 

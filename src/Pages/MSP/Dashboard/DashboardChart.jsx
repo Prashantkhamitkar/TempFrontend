@@ -10,7 +10,6 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Chart as ChartJS, Tooltip, Legend } from "chart.js";
-import { useNavigate } from "react-router-dom";
 
 // Register the required Chart.js plugins
 ChartJS.register(Tooltip, Legend);
@@ -29,7 +28,6 @@ const DashBoardChart = () => {
   });
   const [chartType, setChartType] = useState("Pie");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const navigate=useNavigate();
 
   const toggleDropdown = () => setDropdownOpen((prevState) => !prevState);
 
@@ -85,7 +83,7 @@ const DashBoardChart = () => {
       const index = element[0].index;
       const label = graphData.labels[index];
       const value = graphData.datasets[0].data[index];
-navigate("/ticket")
+
       // Perform your data fetching logic here
       console.log(`Label: ${label}, Value: ${value}`);
     }

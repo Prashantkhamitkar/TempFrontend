@@ -42,7 +42,7 @@ const handleEdit = (row) => {
       name: <span className="font-weight-bold fs-13">CUSTOMER</span>,
       selector: (row) => row.Customer,
       sortable: true,
-      cell: (row) => <Link to="/mspcustomer">{row.Customer}</Link>,
+      cell: (row) => <Link to="#!">{row.Customer}</Link>,
     },
     {
       name: <span className="font-weight-bold fs-13">ADDRESS</span>,

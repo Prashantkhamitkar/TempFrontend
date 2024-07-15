@@ -208,8 +208,6 @@ const CustomerModel = ({
                       id="phoneNumber"
                       className="custominput"
                       placeholder="Enter phone number"
-                      value={phoneNumber}
-                      onChange={(e)=>setPhoneNumber(e.target.value)}
                     />
                     {showAdditionalPhone && (
                       <div className="mt-3">

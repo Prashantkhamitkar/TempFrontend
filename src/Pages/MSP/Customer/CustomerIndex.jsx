@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "reactstrap";
 import Breadcrumbs from "../../../components/Common/Breadcrumb";
 import AddCustomer from "./AddCustomer";
 import CustomerTable from "./CustomerTable";
 
-const CustomerIndex = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
+
+
+const CustomerIndex = () => {
+    
   return (
     <>
       <div className="page-content">
         <Container fluid={true}>
           <Breadcrumbs title="MSP" breadcrumbItem="Customers" />
-          <AddCustomer />
+          <AddCustomer/>
           <CustomerTable />
+         
         </Container>
       </div>
     </>

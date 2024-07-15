@@ -10,7 +10,7 @@ import {
   Row,
 } from "reactstrap";
 import Select from "react-select";
-
+import { useSelector } from "react-redux";
 import CustomerModel from "./CustomerModel";
 
 const initialCustomerOptions = [
@@ -33,7 +33,7 @@ const Customer = ({ setCustomerData, reset }) => {
   const [modal, setModal] = useState(false);
   const [newCustomerContact, setNewCustomerContact] = useState("");
   const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
-  
+  const layoutMode = useSelector((state) => state.Layout.layoutModeTypes);
 
   const [customerOptions, setCustomerOptions] = useState(
     initialCustomerOptions
@@ -61,7 +61,6 @@ const Customer = ({ setCustomerData, reset }) => {
       setSelectedContact(null);
       setSelectedSite(null);
       setDepartment("");
-      setCustomerOptions(initialCustomerOptions);
     }
   }, [reset]);
 

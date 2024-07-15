@@ -62,7 +62,7 @@ const AddCustomerModal = ({ modal, toggleModal }) => {
                     <Label for="Address" className="mt-3 mt-lg-0">
                       ADDRESS
                     </Label>
-                    <LocationSearchInput onSelect={handleAddressSelect} address={address} />
+                    <LocationSearchInput onSelect={handleAddressSelect} />
                   </Col>
                 </Row>
                 <Row className="mt-3">

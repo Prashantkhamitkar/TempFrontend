@@ -27,7 +27,9 @@ const productData = [
   { value: 10, label: "10 - Keyboard" },
 ];
 
-
+const inputStyle = {
+  backgroundColor: "#f1f5f7",
+};
 
 const Product = ({ setProductData ,reset}) => {
   const [selectedProduct, setSelectedProduct] = useState(null);

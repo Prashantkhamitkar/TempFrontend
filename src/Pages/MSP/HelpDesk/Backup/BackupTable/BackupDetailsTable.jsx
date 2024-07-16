@@ -48,19 +48,21 @@ const BackupDetailsTable = () => {
                   md="12"
                   className="col-sm d-flex justify-content-end align-items-center"
                 >
-                  <BackupButton check={check} toggle={toggleModal} />
-                  <CSVLink
-                    data={backupdata}
-                    headers={csvHeaders}
-                    filename="backup-data.csv"
-                    className="btn btn-rounded btn-success ms-2 d-flex align-items-center justify-content-center"
-                  >
-                    <span
-                      className="mdi mdi-download-circle-outline me-2"
-                      style={{ fontSize: "1rem" }}
-                    ></span>
-                    DOWNLOAD CSV
-                  </CSVLink>
+                  <div className="d-flex flex-column flex-md-row align-items-center  justify-content-center">
+                    <BackupButton check={check} toggle={toggleModal} />
+                    <CSVLink
+                      data={backupdata}
+                      headers={csvHeaders}
+                      filename="backup-data.csv"
+                      className="btn btn-rounded btn-success ms-md-2 mt-2 mt-md-0 d-flex align-items-center justify-content-center"
+                    >
+                      <span
+                        className="mdi mdi-download-circle-outline me-2 "
+                        style={{ fontSize: "1rem" }}
+                      ></span>
+                      DOWNLOAD CSV
+                    </CSVLink>
+                  </div>
                 </Col>
               </Row>
               <Row className="g-4">

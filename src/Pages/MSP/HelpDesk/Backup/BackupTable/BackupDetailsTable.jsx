@@ -36,14 +36,6 @@ const BackupDetailsTable = () => {
   ];
   return (
     <>
-      <CSVLink
-        data={backupdata}
-        headers={csvHeaders}
-        filename="backup-data.csv"
-        className="btn btn-primary mb-3"
-      >
-        DOWNLOAD CSV
-      </CSVLink>
       <Row>
         <Col lg={12}>
           <Card>
@@ -57,6 +49,18 @@ const BackupDetailsTable = () => {
                   className="col-sm d-flex justify-content-end align-items-center"
                 >
                   <BackupButton check={check} toggle={toggleModal} />
+                  <CSVLink
+                    data={backupdata}
+                    headers={csvHeaders}
+                    filename="backup-data.csv"
+                    className="btn btn-rounded btn-success ms-2 d-flex align-items-center justify-content-center"
+                  >
+                    <span
+                      className="mdi mdi-download-circle-outline me-2"
+                      style={{ fontSize: "1rem" }}
+                    ></span>
+                    DOWNLOAD CSV
+                  </CSVLink>
                 </Col>
               </Row>
               <Row className="g-4">

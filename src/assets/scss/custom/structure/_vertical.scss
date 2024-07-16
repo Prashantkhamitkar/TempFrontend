@@ -269,11 +269,11 @@
                             padding-left: 25px;
                         }
                     }
-
+//changes done here with value 190px to 235px 
                     &:hover {
                         > a {
                             position: relative;
-                            width: calc(190px + #{var(--#{$prefix}sidebar-collapsed-width)});
+                            width: calc(235px + #{var(--#{$prefix}sidebar-collapsed-width)});
                             color: $primary;
                             // background-color: darken(var(--#{$prefix}sidebar-bg), 4%);
                             transition: none;
@@ -291,7 +291,7 @@
                             display: block;
                             left: var(--#{$prefix}sidebar-collapsed-width);
                             position: absolute;
-                            width: 190px;
+                            width: 235px;
                             height: auto !important;
                             box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, 0.1);
 
@@ -325,7 +325,7 @@
                         &:hover {
                             > ul {
                                 display: block;
-                                left: 190px;
+                                left: 235px;
                                 height: auto !important;
                                 margin-top: -36px;
                                 position: absolute;

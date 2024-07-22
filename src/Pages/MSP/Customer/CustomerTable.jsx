@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CustomerData from './CustomerData';
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import { data } from "./data";
+import ActionButton from '../common/ActionButton';
 const CustomerTable = () => {
     const [customerData, setCustomerData] = useState(data);
     const [searchTerm,setSearchTerm]=useState("");
@@ -27,10 +28,7 @@ const CustomerTable = () => {
             <CardBody>
               <Row className="g-4">
                 <Col className="col-sm">
-                  <div
-                    className="app-search d-flex mt-0 align-items-center gap-3"
-                    style={{ width: "100%" }}
-                  >
+                  <div className="app-search d-flex flex-column flex-sm-row mt-0 align-items-start align-items-sm-center gap-3">
                     <p className="text-muted mb-0">Summary</p>
                     <div className="position-relative">
                       <input
@@ -40,8 +38,26 @@ const CustomerTable = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
-                      <span className="ri-search-line"></span>
+                      <span
+                        className="ri-search-line"
+                        style={{ zIndex: "0" }}
+                      ></span>
                     </div>
+                    <ActionButton
+                      data={customerData}
+                      setdata={setCustomerData}
+                    />
+                    <Button
+                      color="secondary"
+                      className="btn btn-rounded btn-light waves-effect  d-flex align-items-center justify-content-center"
+                      onClick={() => {setCustomerData(data);setSearchTerm("")}}
+                    >
+                      CLEAR
+                      <i
+                        className="fas fa-times ms-2"
+                        style={{ fontSize: "0.9rem" }}
+                      ></i>
+                    </Button>
                   </div>
                 </Col>
               </Row>

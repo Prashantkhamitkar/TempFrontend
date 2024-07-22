@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import BackupEditModal from './BackupEditModal';
 
+
 const BackupData = ({data,setToggle,modal,check}) => {
 const [selectedRow, setSelectedRow] = useState([]);
 const handleSelectedRow = (row) => {
@@ -120,10 +121,12 @@ useEffect(() => {
  ];
 
     return (
-    <><DataTable columns={columns} data={data} pagination/>
-    <BackupEditModal modal={modal} toggle={setToggle}/>
-    </>
-  )
+      <>
+     
+        <DataTable columns={columns} data={data} pagination />
+        <BackupEditModal modal={modal} toggle={setToggle} />
+      </>
+    );
 }
 
 export default BackupData

@@ -42,7 +42,10 @@ const ShiftManagementTable = () => {
                         // value={search}
                         // onChange={(e) => setsearch(e.target.value)}
                       />
-                      <span className="ri-search-line"></span>
+                      <span
+                        className="ri-search-line"
+                        style={{ zIndex: "0" }}
+                      ></span>
                     </div>
                   </div>
                 </Col>

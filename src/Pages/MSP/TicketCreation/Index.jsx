@@ -38,7 +38,7 @@ useEffect(()=>{
       <div className="page-content">
         <Container fluid={true}>
           <Breadcrumbs title="MSP" breadcrumbItem="Ticket" />
-          <Customer setCustomerData={setCustomerData} reset={reset} />
+          <Customer setCustomerData={setCustomerData} reset={reset}  />
           <Product setProductData={setProductData} reset={reset} />
           <Attribute setAttributeData={setAttributeData} reset={reset} />
           <Ticket setTicketData={setTicketData} reset={reset} />

@@ -182,7 +182,7 @@ const NewContractCard = () => {
                     id="contractpricing"
                     className="custominput"
                     required={true}
-                    placeholder="Enter the Type of Service"
+                    placeholder="Enter the Contract Price"
                   />
                 </Col>
                 <Col lg="6">

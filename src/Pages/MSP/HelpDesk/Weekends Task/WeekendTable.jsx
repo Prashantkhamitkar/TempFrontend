@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {data} from "./Weekend"
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import WeekendData from './WeekendData';
 import CreateModal from './CreateModal';
+import ActionButton from '../../common/ActionButton';
 const customers = [
   { value: "Acme Corp", label: "Acme Corp" },
   { value: "customer2", label: "Customer 2" },
@@ -55,10 +56,7 @@ setToggle(!toggle);
               </Row>
               <Row className="g-4">
                 <Col className="col-sm">
-                  <div
-                    className="app-search d-flex mt-0 align-items-center gap-3"
-                    style={{ width: "100%" }}
-                  >
+                  <div className="app-search d-flex flex-column flex-sm-row mt-0 align-items-start align-items-sm-center gap-3">
                     <p className="text-muted mb-0">Summary</p>
                     <div className="position-relative">
                       <input
@@ -68,13 +66,35 @@ setToggle(!toggle);
                         value={search}
                         onChange={(e) => setsearch(e.target.value)}
                       />
-                      <span className="ri-search-line"></span>
+                      <span
+                        className="ri-search-line"
+                        style={{ zIndex: "0" }}
+                      ></span>
                     </div>
+                    <ActionButton data={taskdata} setdata={setTaskData} />
+                    <Button
+                      color="secondary"
+                      className="btn btn-rounded btn-light waves-effect  d-flex align-items-center justify-content-center"
+                      onClick={() => {
+                        setTaskData(data);
+                        setsearch("");
+                      }}
+                    >
+                      CLEAR
+                      <i
+                        className="fas fa-times ms-2"
+                        style={{ fontSize: "0.9rem" }}
+                      ></i>
+                    </Button>
                   </div>
                 </Col>
               </Row>
 
-              <WeekendData data={taskdata} customers={customers} assignees={assignees} />
+              <WeekendData
+                data={taskdata}
+                customers={customers}
+                assignees={assignees}
+              />
               <CreateModal
                 modal={toggle}
                 toggleModal={handleclick}

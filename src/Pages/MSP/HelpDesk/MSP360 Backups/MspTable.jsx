@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { records as data } from "./MSP360data.js";
 import MspTableData from "./MspTableData.jsx";
-import { Card, CardBody, CardHeader, Col, Row } from "reactstrap";
+import { Button, Card, CardBody, CardHeader, Col, Row } from "reactstrap";
+import ActionButton from "../../common/ActionButton.jsx";
 
 const MspTable = () => {
   const [mspData, setMspData] = useState(data);
@@ -26,10 +27,7 @@ const MspTable = () => {
             <CardBody>
               <Row className="g-4">
                 <Col className="col-sm">
-                  <div
-                    className="app-search d-flex mt-0 align-items-center gap-3"
-                    style={{ width: "100%" }}
-                  >
+                  <div className="app-search d-flex flex-column flex-sm-row mt-0 align-items-start align-items-sm-center gap-3">
                     <p className="text-muted mb-0">Summary</p>
                     <div className="position-relative">
                       <input
@@ -39,8 +37,26 @@ const MspTable = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
-                      <span className="ri-search-line"></span>
+                      <span
+                        className="ri-search-line"
+                        style={{ zIndex: "0" }}
+                      ></span>
                     </div>
+                    <ActionButton data={mspData} setdata={setMspData} />
+                    <Button
+                      color="secondary"
+                      className="btn btn-rounded btn-light waves-effect  d-flex align-items-center justify-content-center"
+                      onClick={() => {
+                        setMspData(data);
+                        setSearchTerm("");
+                      }}
+                    >
+                      CLEAR
+                      <i
+                        className="fas fa-times ms-2"
+                        style={{ fontSize: "0.9rem" }}
+                      ></i>
+                    </Button>
                   </div>
                 </Col>
               </Row>

@@ -109,7 +109,9 @@ const Navdata = () => {
 
           subState: subhr,
           subItem: [
+            { link: "/shifts-dashboard", title: "Shifts Dashboard" },
             { link: "/my-shifts", title: "My Shifts" },
+            { link: "/allocate-shifts", title: "Allocate Shifts" },
             { link: "/pick-shifts", title: "Pick Shifts" },
             { link: "/manage-shift", title: "Shift Transfers" },
           ],
@@ -123,8 +125,12 @@ const Navdata = () => {
           url: "/my-leaves",
         },
         {
+          label2: "Leave Management",
+          url: "/leave-management",
+        },
+        {
           label2: "Attendance Dashboard",
-          url: "/#",
+          url: "/attendance-dashboard",
         },
       ],
     },
@@ -209,7 +215,7 @@ const Navdata = () => {
         },
         {
           label2: "Backblaze Charges",
-          url: "/#",
+          url: "/backblazecharges",
         },
       ],
     },
@@ -218,7 +224,7 @@ const Navdata = () => {
       label: "Knowledge Base",
       icon: "mdi mdi-head-lightbulb me-2",
       isdropDown: true,
-      url: "/#",
+      url: "/knowledge-base",
       click: function () {
         sethp(false);
         sethr(false);
@@ -233,7 +239,7 @@ const Navdata = () => {
       label: "Timesheet",
       icon: "mdi mdi-clock-time-four-outline me-2",
       isdropDown: true,
-      url: "/mspcustomer",
+      url: "/timesheet",
       click: function () {
         sethp(false);
         sethr(false);

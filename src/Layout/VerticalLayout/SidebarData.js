@@ -55,16 +55,19 @@ const SidebarData = [
         sublabel: "Shifts Management",
         link: "/#",
         subMenu: [
+          { title: "Shifts Dashboard", link: "/shifts-dashboard" },
           { title: "My Shifts", link: "/my-shifts" },
+          { title: "Allocate Shifts", link: "/allocate-shifts" },
           { title: "Pick Shifts", link: "/pick-shifts" },
           { title: "Shift Transfer", link: "/manage-shift" },
         ],
       },
       { sublabel: "Holiday List", link: "/holiday-list" },
       { sublabel: "My Leaves", link: "/my-leaves" },
+      { sublabel: "Leave Management", link: "/leave-management" },
       {
         sublabel: "Attendance Dashboard",
-        link: "/#",
+        link: "/attendance-dashboard",
       },
     ],
   },
@@ -101,21 +104,20 @@ const SidebarData = [
         ],
       },
       { sublabel: "Stripe Customer Mapping", link: "/#" },
-      { sublabel: "Backblaze Charges", link: "/#" },
+      { sublabel: "Backblaze Charges", link: "/backblazecharges" },
     ],
   },
   {
     label: "Knowledge Base",
     icon: "mdi mdi-head-lightbulb",
     isHasArrow: true,
-    url: "/#",
+    url: "/knowledge-base",
   },
   {
     label: "Timesheet",
     icon: "mdi mdi-clock-time-four-outline",
     isHasArrow: true,
-    url: "/#",
+    url: "/timesheet",
   },
-  
 ];
 export default SidebarData;

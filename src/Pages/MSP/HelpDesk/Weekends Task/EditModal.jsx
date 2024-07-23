@@ -1,58 +1,65 @@
-// EditModal.js
-
 import React, { useState, useEffect } from "react";
-import { Button, Col, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, Row } from "reactstrap";
+import {
+  Button,
+  Col,
+  FormGroup,
+  Label,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  Row,
+} from "reactstrap";
 import Select from "react-select";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const EditModal = ({ modal, toggleModal, rowData, customers, assignees }) => {
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [subject, setSubject] = useState("");
-  const [description, setDescription] = useState("");
-  const [resolution, setResolution] = useState("");
-  const [status, setStatus] = useState({ value: "Open", label: "Open" });
-  const [assignedTo, setAssignedTo] = useState(null);
+  const [initialValues, setInitialValues] = useState({
+    selectedCustomer: null,
+    subject: "",
+    description: "",
+    resolution: "",
+    status: { value: "Open", label: "Open" },
+    assignedTo: null,
+  });
 
- useEffect(() => {
-   if (rowData) {
-     const customerOption = customers.find(
-       (c) => c.value === rowData.CUSTOMER_NAME
-     );
-     const assigneeOption = assignees.find(
-       (a) => a.value === rowData.ASSIGNED_TO
-     );
+  useEffect(() => {
+    if (rowData) {
+      const customerOption = customers.find(
+        (c) => c.value === rowData.CUSTOMER_NAME
+      );
+      const assigneeOption = assignees.find(
+        (a) => a.value === rowData.ASSIGNED_TO
+      );
 
-     setSelectedCustomer(customerOption || null); // Initialize with existing customer name
-     setSubject(rowData.SUBJECT);
-     setDescription(rowData.DESCRIPTION); // Assuming these fields exist in your rowData
-     setResolution(rowData.RESOLUTION); // Assuming these fields exist in your rowData
-     setStatus({ value: rowData.STATUS, label: rowData.STATUS });
-     setAssignedTo(assigneeOption || null); // Initialize with existing assigned to value
-   }
- }, [rowData, customers, assignees]);
+      setInitialValues({
+        selectedCustomer: customerOption || null,
+        subject: rowData.SUBJECT,
+        description: rowData.DESCRIPTION,
+        resolution: rowData.RESOLUTION,
+        status: { value: rowData.STATUS, label: rowData.STATUS },
+        assignedTo: assigneeOption || null,
+      });
+    }
+  }, [rowData, customers, assignees]);
 
-  const statusOptions = [
-    { value: "Open", label: "Open" },
-    { value: "Completed", label: "Completed" },
-    { value: "In Progress", label: "In Progress" },
-  ];
+  const validationSchema = Yup.object().shape({
+    selectedCustomer: Yup.object().required("Customer is required"),
+    subject: Yup.string().required("Subject is required"),
+    description: Yup.string().required("Description is required"),
+    resolution: Yup.string(),
+    status: Yup.object().required("Status is required"),
+    assignedTo: Yup.object().required("Assignee is required"),
+  });
 
-  const handleSubmit = () => {
-    // Handle form submission for editing
-    console.log({
-      selectedCustomer,
-      subject,
-      description,
-      resolution,
-      status,
-      assignedTo,
-    });
+  const handleSubmit = (values) => {
+    console.log(values);
     toggleModal();
   };
 
   const handleDelete = () => {
-    // Handle delete operation
     console.log("Deleting...");
-    toggleModal(); // Close modal after delete operation
+    toggleModal();
   };
 
   const customStyles = {
@@ -67,157 +74,177 @@ const EditModal = ({ modal, toggleModal, rowData, customers, assignees }) => {
   };
 
   return (
-    <>
-      <Modal isOpen={modal} toggle={toggleModal} size="lg" centered>
-        <ModalBody>
-          <FormGroup>
-            <Row>
-              <Col md={12}>
-                <Row className="mt-3">
-                  <Col lg="6">
-                    <Label
-                      style={{ position: "relative", display: "inline-block" }}
-                    >
-                      CUSTOMER
-                    </Label>
-                    <Select
-                      placeholder="Select Customer"
-                      options={customers}
-                      onChange={setSelectedCustomer}
-                      value={selectedCustomer}
-                      classNamePrefix="select2-selection"
-                      menuPlacement="auto"
-                      menuPortalTarget={document.body}
-                      styles={customStyles}
-                    />
-                  </Col>
-                  <Col lg="6">
-                    <Label
-                      for="subject"
-                      style={{ position: "relative", display: "inline-block" }}
-                      className="mt-3 mt-md-3 mt-lg-0"
-                    >
-                      SUBJECT
-                      <i
-                        className="fas fa-asterisk"
-                        style={{
-                          color: "red",
-                          fontSize: "0.5em",
-                          position: "absolute",
-                          top: "0.5em",
-                          right: "-1.5em",
-                        }}
-                      ></i>
-                    </Label>
-                    <Input
-                      id="subject"
-                      className="custominput"
-                      placeholder="Enter subject"
-                      required={true}
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                    />
-                  </Col>
-                </Row>
-                <Row className="mt-3">
-                  <Col lg="6">
-                    <div className="mb-3">
-                      <Label
-                        className="form-label"
-                        style={{
-                          position: "relative",
-                          display: "inline-block",
-                        }}
-                      >
-                        DESCRIPTION
-                        <i
-                          className="fas fa-asterisk"
-                          style={{
-                            color: "red",
-                            fontSize: "0.5em",
-                            position: "absolute",
-                            top: "0.5em",
-                            right: "-1.5em",
-                          }}
-                        ></i>
-                      </Label>
-                      <div>
-                        <textarea
-                          placeholder="Enter Additional Product Information"
-                          required
+    <Modal isOpen={modal} toggle={toggleModal} size="lg" centered>
+      <ModalBody>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          enableReinitialize
+        >
+          {({ setFieldValue }) => (
+            <Form>
+              <FormGroup>
+                <Row>
+                  <Col md={12}>
+                    <Row className="mt-3">
+                      <Col lg="6">
+                        <Label>CUSTOMER</Label>
+                        <Field name="selectedCustomer">
+                          {({ field, form }) => (
+                            <Select
+                              placeholder="Select Customer"
+                              options={customers}
+                              onChange={(option) =>
+                                form.setFieldValue(field.name, option)
+                              }
+                              value={field.value}
+                              classNamePrefix="select2-selection"
+                              menuPlacement="auto"
+                              menuPortalTarget={document.body}
+                              styles={customStyles}
+                            />
+                          )}
+                        </Field>
+
+                        <ErrorMessage
+                          name="selectedCustomer"
+                          component="div"
+                          className="text-danger"
+                        />
+                      </Col>
+                      <Col lg="6">
+                        <Label for="subject">SUBJECT</Label>
+                        <Field
+                          id="subject"
+                          name="subject"
                           className="form-control custominput"
-                          rows="5"
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
-                        ></textarea>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col lg="6">
-                    <div className="mb-3">
-                      <Label className="form-label">RESOLUTION</Label>
-                      <div>
-                        <textarea
-                          placeholder="Enter Additional Product Information"
-                          required
-                          className="form-control custominput"
-                          rows="5"
-                          value={resolution}
-                          onChange={(e) => setResolution(e.target.value)}
-                        ></textarea>
-                      </div>
-                    </div>
+                          placeholder="Enter subject"
+                        />
+                        <ErrorMessage
+                          name="subject"
+                          component="div"
+                          className="text-danger"
+                        />
+                      </Col>
+                    </Row>
+                    <Row className="mt-3">
+                      <Col lg="6">
+                        <div className="mb-3">
+                          <Label>DESCRIPTION</Label>
+                          <Field
+                            name="description"
+                            as="textarea"
+                            className="form-control custominput"
+                            rows="5"
+                            placeholder="Enter description"
+                          />
+                          <ErrorMessage
+                            name="description"
+                            component="div"
+                            className="text-danger"
+                            type="invalid"
+                          />
+                        </div>
+                      </Col>
+                      <Col lg="6">
+                        <div className="mb-3">
+                          <Label>RESOLUTION</Label>
+                          <Field
+                            name="resolution"
+                            as="textarea"
+                            className="form-control custominput"
+                            rows="5"
+                            placeholder="Enter resolution"
+                          />
+                          <ErrorMessage
+                            name="resolution"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row className="mt-3">
+                      <Col lg="6">
+                        <div className="mb-3">
+                          <Label>STATUS</Label>
+                          <Field name="status">
+                            {({ field, form }) => (
+                              <Select
+                                placeholder="Select Status"
+                                options={[
+                                  { value: "Open", label: "Open" },
+                                  { value: "Completed", label: "Completed" },
+                                  {
+                                    value: "In Progress",
+                                    label: "In Progress",
+                                  },
+                                ]}
+                                onChange={(option) =>
+                                  form.setFieldValue(field.name, option)
+                                }
+                                value={field.value}
+                                classNamePrefix="select2-selection"
+                                menuPlacement="auto"
+                                menuPortalTarget={document.body}
+                                styles={customStyles}
+                              />
+                            )}
+                          </Field>
+                          <ErrorMessage
+                            name="status"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+                      </Col>
+                      <Col lg="6">
+                        <div className="mb-3">
+                          <Label>ASSIGNED TO</Label>
+                          <Field name="assignedTo">
+                            {({ field, form }) => (
+                              <Select
+                                placeholder="Select Assignee"
+                                options={assignees}
+                                onChange={(option) =>
+                                  form.setFieldValue(field.name, option)
+                                }
+                                value={field.value}
+                                classNamePrefix="select2-selection"
+                                menuPlacement="auto"
+                                menuPortalTarget={document.body}
+                                styles={customStyles}
+                              />
+                            )}
+                          </Field>
+                          <ErrorMessage
+                            name="assignedTo"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
-                <Row className="mt-3">
-                  <Col lg="6">
-                    <div className="mb-3">
-                      <Label>STATUS</Label>
-                      <Select
-                        placeholder="Select Status"
-                        classNamePrefix="select2-selection"
-                        styles={customStyles}
-                        menuPlacement="auto"
-                        menuPortalTarget={document.body}
-                        options={statusOptions}
-                        value={status}
-                        onChange={setStatus}
-                      />
-                    </div>
-                  </Col>
-                  <Col lg="6">
-                    <div className="mb-3">
-                      <Label>ASSIGNED TO</Label>
-                      <Select
-                        placeholder="Select Assignee"
-                        classNamePrefix="select2-selection"
-                        styles={customStyles}
-                        menuPlacement="auto"
-                        menuPortalTarget={document.body}
-                        options={assignees}
-                        value={assignedTo}
-                        onChange={setAssignedTo}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </FormGroup>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="danger" onClick={handleDelete}>
-            DELETE
-          </Button>
-          <Button color="info" onClick={handleSubmit}>
-            SAVE
-          </Button>
-          <Button color="secondary" onClick={toggleModal}>
-            CANCEL
-          </Button>
-        </ModalFooter>
-      </Modal>
-    </>
+              </FormGroup>
+              <ModalFooter>
+                <Button color="danger" onClick={handleDelete}>
+                  DELETE
+                </Button>
+                <Button color="info" type="submit">
+                  SAVE
+                </Button>
+                <Button color="secondary" onClick={toggleModal}>
+                  CANCEL
+                </Button>
+              </ModalFooter>
+            </Form>
+          )}
+        </Formik>
+      </ModalBody>
+    </Modal>
   );
 };
 

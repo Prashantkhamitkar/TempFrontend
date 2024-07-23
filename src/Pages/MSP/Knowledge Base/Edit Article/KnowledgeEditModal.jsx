@@ -17,6 +17,7 @@ import Select from "react-select";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 
 
